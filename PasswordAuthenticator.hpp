@@ -6,6 +6,10 @@
 
 #include <QtCore/QString>
 
+/* Basic login and password authenticator.
+ *
+ * Adds an "Authorization" header, using HTTP Basic authentication.
+ */
 class REDMINEQTSHARED_EXPORT PasswordAuthenticator : public IAuthenticator {
 public:
 	PasswordAuthenticator(QString login, QString password);

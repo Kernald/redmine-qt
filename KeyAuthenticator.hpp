@@ -6,6 +6,10 @@
 
 #include <QtCore/QByteArray>
 
+/* API key authenticator.
+ *
+ * Adds an "X-Redmine-API-Key" header, with API key.
+ */
 class REDMINEQTSHARED_EXPORT KeyAuthenticator : public IAuthenticator {
 public:
 	KeyAuthenticator(QByteArray apiKey);
