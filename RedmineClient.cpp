@@ -23,12 +23,19 @@ RedmineClient::~RedmineClient() {
 
 void RedmineClient::init() {
 	_nma = new QNetworkAccessManager;
+	_ua = "redmine-qt";
+}
+
+void RedmineClient::setUserAgent(QByteArray ua) {
+	_ua = ua;
 }
 
 void RedmineClient::sendRequest(QUrl url, EMode mode, const QByteArray& requestData) {
 	QByteArray postDataSize = QByteArray::number(requestData.size());
 
 	QNetworkRequest request(url);
+	request.setRawHeader("User-Agent", _ua);
+	request.setRawHeader("X-Custom-User-Agent", _ua);
 	request.setRawHeader("Content-Type", "text/xml");
 	request.setRawHeader("Content-Length", postDataSize);
 

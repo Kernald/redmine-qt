@@ -35,6 +35,10 @@ public:
 	RedmineClient(QUrl url, QString login, QString password, bool checkSsl = true, QObject* parent = NULL);
 	virtual ~RedmineClient();
 
+	/* Defines the user agent for the client.
+	 */
+	void setUserAgent(QByteArray ua);
+
 private:
 	/* Commont initialization steps.
 	 *
@@ -49,6 +53,7 @@ private:
 	QUrl					_url;
 	IAuthenticator*			_authenticator;
 	QNetworkAccessManager*	_nma;
+	QByteArray				_ua;
 };
 
 #endif // __REDMINE_CLIENT_HPP__
