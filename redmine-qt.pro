@@ -13,15 +13,15 @@ TEMPLATE = lib
 
 DEFINES += REDMINEQT_LIBRARY
 
-SOURCES += RedmineClient.cpp \
-    PasswordAuthenticator.cpp \
-    KeyAuthenticator.cpp
+SOURCES += src/RedmineClient.cpp \
+    src/PasswordAuthenticator.cpp \
+    src/KeyAuthenticator.cpp
 
-HEADERS += RedmineClient.hpp\
-        redmine-qt_global.hpp \
-    PasswordAuthenticator.hpp \
-    IAuthenticator.hpp \
-    KeyAuthenticator.hpp
+HEADERS += src/RedmineClient.hpp\
+        src/redmine-qt_global.hpp \
+    src/PasswordAuthenticator.hpp \
+    src/IAuthenticator.hpp \
+    src/KeyAuthenticator.hpp
 
 unix:!symbian {
     maemo5 {
