@@ -2,6 +2,7 @@
 #define __REDMINE_CLIENT_HPP__
 
 class IAuthenticator;
+class QNetworkAccessManager;
 
 #include "redmine-qt_global.hpp"
 
@@ -18,6 +19,13 @@ class REDMINEQTSHARED_EXPORT RedmineClient : public QObject {
 	Q_OBJECT
 
 public:
+	enum EMode {
+		GET,
+		POST,
+		PUT,
+		DELETE
+	};
+
 	/* Creates a client using an API key authenticator.
 	 */
 	RedmineClient(QUrl url, QString apiKey, bool checkSsl = true, QObject* parent = NULL);
@@ -28,8 +36,19 @@ public:
 	virtual ~RedmineClient();
 
 private:
-	QUrl			_url;
-	IAuthenticator*	_authenticator;
+	/* Commont initialization steps.
+	 *
+	 * Creates the network access manager.
+	 */
+	void					init();
+
+	/* Sends a request to the Redmine endpoint.
+	 */
+	void					sendRequest(QUrl url, EMode mode = GET, const QByteArray& requestData = "");
+
+	QUrl					_url;
+	IAuthenticator*			_authenticator;
+	QNetworkAccessManager*	_nma;
 };
 
 #endif // __REDMINE_CLIENT_HPP__
