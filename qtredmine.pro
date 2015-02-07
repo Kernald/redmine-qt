@@ -1,7 +1,7 @@
 QT       += network xml
 QT       -= gui
 
-TARGET = qredmine
+TARGET = qtredmine
 TEMPLATE = lib
 
 DEFINES += REDMINEQT_LIBRARY
